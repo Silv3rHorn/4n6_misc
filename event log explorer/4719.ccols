@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserData>
+	<CustomColumns>
+		<Col0>
+			<Title>Subject Username</Title>
+			<EventIDs>4719</EventIDs>
+			<Value>{Param[2]}</Value>
+		</Col0>
+		<Col1>
+			<Title>Subject Domain</Title>
+			<EventIDs>4719</EventIDs>
+			<Value>{Param[3]}</Value>
+		</Col1>
+		<Col2>
+			<Title>Category</Title>
+			<EventIDs>4719</EventIDs>
+			<Value>{Param[5]}</Value>
+		</Col2>
+		<Col3>
+			<Title>Subcategory</Title>
+			<EventIDs>4719</EventIDs>
+			<Value>{Param[6]}</Value>
+		</Col3>
+		<Col4>
+			<Title>Changes</Title>
+			<EventIDs>4719</EventIDs>
+			<Value>{Param[8]}</Value>
+		</Col4>
+	</CustomColumns>
+</UserData>

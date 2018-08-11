@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserData>
+	<CustomColumns>
+		<Col0>
+			<Title>Account Name</Title>
+			<EventIDs>4634</EventIDs>
+			<Value>{PARAM[3]}\{PARAM[2]}</Value>
+		</Col0>
+		<Col1>
+			<Title>Logon Type</Title>
+			<EventIDs>4634</EventIDs>
+			<Value>{Logon Type}</Value>
+		</Col1>
+		<Col2>
+			<Title>Logon ID</Title>
+			<EventIDs>4634</EventIDs>
+			<Value>{PARAM[4]}</Value>
+		</Col2>
+	</CustomColumns>
+</UserData>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserData>
+	<CustomColumns>
+		<Col0>
+			<Title>Logon Type</Title>
+			<EventIDs>4624,4625</EventIDs>
+			<Value>{Logon Type}</Value>
+		</Col0>
+		<Col1>
+			<Title>User name</Title>
+			<EventIDs>4624,4625</EventIDs>
+			<Value>{PARAM[7]}\{PARAM[6]}</Value>
+		</Col1>
+		<Col2>
+			<Title>Workstation Name</Title>
+			<EventIDs>4624,4625</EventIDs>
+			<Value>{PARAM[12]}</Value>
+		</Col2>
+		<Col3>
+			<Title>Source IP</Title>
+			<EventIDs>4624,4625</EventIDs>
+			<Value>{Network Information\Source Network Address}</Value>
+		</Col3>
+		<Col4>
+			<Title>Source Port</Title>
+			<EventIDs>4624,4625</EventIDs>
+			<Value>{Network Information\Source Port}</Value>
+		</Col4>
+	</CustomColumns>
+</UserData>

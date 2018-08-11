@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserData>
+	<CustomColumns>
+		<Col0>
+			<Title>Subject Username</Title>
+			<EventIDs>4688</EventIDs>
+			<Value>{Param[2]}</Value>
+		</Col0>
+		<Col1>
+			<Title>Subject Domain</Title>
+			<EventIDs>4688</EventIDs>
+			<Value>{Param[3]}</Value>
+		</Col1>
+		<Col2>
+			<Title>ProcessName</Title>
+			<EventIDs>4688</EventIDs>
+			<Value>{Param[6]}</Value>
+		</Col2>
+		<Col3>
+			<Title>TokenElevationType</Title>
+			<EventIDs>4688</EventIDs>
+			<Value>{Param[7]}</Value>
+		</Col3>
+		<Col4>
+			<Title>CmdLine</Title>
+			<EventIDs>4688</EventIDs>
+			<Value>{Param[9]}</Value>
+		</Col4>
+	</CustomColumns>
+</UserData>
