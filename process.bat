@@ -43,7 +43,7 @@ for /R ".\MRU\Prog\srum\" %%f in (SRUDB.dat) do (
 )
 
 echo ----- registry
-autoripy --rr D:\git\RegRipper\ -s Registry -a MRU\Prog\amcache -m Registry -r Registry >> process_log.txt
+autoripy --rr D:\git\RegRipper2.8\ -s Registry -a MRU\Prog\amcache -m Registry -r Registry >> process_log.txt
 
 echo ----- evtx
 evtx2json -d OSLogs -o OSLogs\ --dedup >> process_log.txt
