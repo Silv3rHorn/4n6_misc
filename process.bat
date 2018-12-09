@@ -17,6 +17,7 @@ for /R ".\MRU\Prog\recentfilecache\" %%f in (RecentFileCache.bcf) do (
 
 echo ----- amcache
 for /R ".\MRU\Prog\amcache\" %%f in (Amcache.hve) do (
+    registryFlush -f %%f --overwrite >> process_log.txt
 	amcacheparser -f %%f -i --mp --csv MRU\Prog >> process_log.txt"
 )
 
@@ -28,6 +29,7 @@ for /R ".\MRU\Prog\sccm\" %%f in (OBJECTS.DATA) do (
 
 echo ----- appcompatcache
 for /R ".\MRU\Registry\" %%f in (SYSTEM) do (
+    registryFlush -f %%f --overwrite
 	appcompatcacheparser -f Registry\SYSTEM --csv MRU\Prog >> process_log.txt
 )
 
@@ -41,6 +43,14 @@ for /R ".\MRU\Prog\srum\" %%f in (SRUDB.dat) do (
 	for %%a in (%%f) do for %%b in ("%%~dpa\.") do set "parent=%%~nxb"
 	D:\git\srum-dump\srum_dump.exe -i MRU\Prog\srum\SRUDB.dat -o MRU\Prog\srum_!parent!.xlsx -t D:\git\srum-dump\SRUM_TEMPLATE.xlsx -r Registry\SOFTWARE >> process_log.txt
 )
+
+echo ----- registryFlush
+echo SAM
+registryFlush -f Registry\SAM --overwrite >> process_log.txt
+echo SECURITY
+registryFlush -f Registry\SECURITY --overwrite >> process_log.txt
+echo SOFTWARE
+registryFlush -f Registry\SOFTWARE --overwrite >> process_log.txt
 
 echo ----- registry
 autoripy --rr D:\git\RegRipper2.8\ -s Registry -a MRU\Prog\amcache -m Registry -r Registry >> process_log.txt
