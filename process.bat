@@ -18,7 +18,7 @@ for /R ".\MRU\Prog\recentfilecache\" %%f in (RecentFileCache.bcf) do (
 echo ----- amcache
 for /R ".\MRU\Prog\amcache\" %%f in (Amcache.hve) do (
     registryFlush -f %%f --overwrite >> process_log.txt
-	amcacheparser -f %%f -i --mp --csv MRU\Prog >> process_log.txt"
+    amcacheparser -f %%f -i --mp --csv MRU\Prog >> process_log.txt"
 )
 
 echo ----- sccm
@@ -30,7 +30,7 @@ for /R ".\MRU\Prog\sccm\" %%f in (OBJECTS.DATA) do (
 echo ----- appcompatcache
 for /R ".\MRU\Registry\" %%f in (SYSTEM) do (
     registryFlush -f %%f --overwrite
-	appcompatcacheparser -f Registry\SYSTEM --csv MRU\Prog >> process_log.txt
+    appcompatcacheparser -f Registry\SYSTEM --csv MRU\Prog >> process_log.txt
 )
 
 echo ----- timeline
@@ -51,6 +51,11 @@ echo SECURITY
 registryFlush -f Registry\SECURITY --overwrite >> process_log.txt
 echo SOFTWARE
 registryFlush -f Registry\SOFTWARE --overwrite >> process_log.txt
+echo Syscache
+registryFlush -f MRU\Prog\syscache\Syscache.hve --overwrite >> process_log.txt
+
+echo ----- syscache
+syscache -f MRU\Prog\syscache\Syscache.hve -o MRU\Prog >> process_log.txt
 
 echo ----- registry
 autoripy --rr D:\git\RegRipper2.8\ -s Registry -a MRU\Prog\amcache -m Registry -r Registry >> process_log.txt
