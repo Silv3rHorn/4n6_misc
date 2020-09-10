@@ -3,6 +3,7 @@
 
 from yarp import Registry
 from datetime import datetime as dt
+from yarp.RegistryFile import HiveBinException
 
 import argparse
 import os
@@ -82,23 +83,27 @@ def main():
             else:
                 log.append(open(path, 'rb'))
 
-        result = yarp_hive.recover_auto(log[0], log[1], log[2])
+        try:
+            result = yarp_hive.recover_auto(log[0], log[1], log[2])
+        except HiveBinException as e:
+            error_msg = e
+            result = None
 
-    if result.recovered:
+    if result is None:
+        print("Flush failed ({0}) - {1}".format(error_msg, path))
+    elif result.recovered:
         print("Flush succeeded!")
-
         if options.overwrite:
             outfile = os.path.join(options.output, hive_name)
             if os.path.isfile(outfile):
                 os.rename(outfile, outfile + '.old')  # backup original file
         else:
             outfile = os.path.join(options.output, hive_name + '_' + timestamp)
-
         yarp_hive.save_recovered_hive(outfile)
+    elif result.is_new_log is None:
+        print("Log files does not contain new data!")
     elif not result.recovered:
         print("Flush failed!")
-    if result.is_new_log is None:
-        print("Log files does not contain new data!")
 
     for file in log:
         if file is not None:
