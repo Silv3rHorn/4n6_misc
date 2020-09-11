@@ -74,23 +74,22 @@ def main():
         sys.exit(1)
 
     with open(options.hive, 'rb') as hive:
-        yarp_hive = Registry.RegistryHive(hive)
-
         log = []
-        for path in LOG_PATH:
-            if path is None:
-                log.append(None)
-            else:
-                log.append(open(path, 'rb'))
-
         try:
+            yarp_hive = Registry.RegistryHive(hive)
+
+            for path in LOG_PATH:
+                if path is None:
+                    log.append(None)
+                else:
+                    log.append(open(path, 'rb'))
             result = yarp_hive.recover_auto(log[0], log[1], log[2])
         except HiveBinException as e:
             error_msg = e
             result = None
 
     if result is None:
-        print("Flush failed ({0}) - {1}".format(error_msg, path))
+        print("Flush failed (HiveBinException: {0})".format(error_msg))
     elif result.recovered:
         print("Flush succeeded!")
         if options.overwrite:
